@@ -38,9 +38,9 @@ def parseOutText(f):
 	
 	stemmed_words = []
 	for word in words:
-		stemmed_words.append(stemmer.stem(word))		
-		
-	words = " ".join(stemmed_words)
+		stemmed_words.append(stemmer(word))		
+
+
 
     return words
 

@@ -32,11 +32,23 @@ plt.show()
 ### visualization code (prettyPicture) to show you the decision boundary
 
 
+from sklearn.ensemble import RandomForestClassifier
+from time import time
+clf = RandomForestClassifier()
 
+t0 = time()
+clf = clf.fit(features_train, labels_train)
 
+print "Total training time: ", round(time()-t0, 3), "secs"
 
+t0 = time()
+pred = clf.predict(features_test)
 
+print "Total  time: ", round(time()-t0, 3), "secs"
 
+from sklearn.metrics import accuracy_score
+acc = accuracy_score(pred, labels_test)
+print "Accuracy: ", acc
 
 try:
     prettyPicture(clf, features_test, labels_test)

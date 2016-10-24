@@ -2,19 +2,19 @@
 
 
 def outlierCleaner(predictions, ages, net_worths):
-    """
-        Clean away the 10% of points that have the largest
-        residual errors (difference between the prediction
-        and the actual net worth).
-
-        Return a list of tuples named cleaned_data where 
-        each tuple is of the form (age, net_worth, error).
-    """
+	cleaned_data = []
+	print "I'M IN"
+	count = 0
+	
+	for prediction in predictions:
+		residual_error = prediction - net_worths[count]
+		cleaned_data.append((ages[count], net_worths[count], abs(residual_error)))
+		count = count + 1
     
-    cleaned_data = []
-
-    ### your code goes here
-
-    
-    return cleaned_data
+	
+	cleaned_data.sort(key = lambda tup : tup[2])
+	
+	del cleaned_data[81:]
+	
+	return cleaned_data
 
